@@ -48,7 +48,7 @@ The following options are supported:
 * __warmupPort__ - The warmup port to use (defaults to a random port in the range of [10,000-50,000])
 
 
-The `warmup` module works by starting the app on a random HTTP port. This allows the application to be started without accepting traffic. By default, a random port is picked.
+The `warmup` module works by starting the app on a random HTTP port. This allows the application to be started without accepting traffic.
 
 NOTES:
 
