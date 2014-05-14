@@ -1,0 +1,33 @@
+{
+  "name": "warmup",
+  "description": "Warmup server apps by hitting URLs or performing tasks",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patrick-steele-idem/warmup.git"
+  },
+  "main": "lib/warmup.js",
+  "scripts": {
+    "test": "node_modules/.bin/mocha --ui bdd --reporter spec ./test && node_modules/.bin/jshint lib"
+  },
+  "keywords": [
+    "server",
+    "warmup",
+    "cluster"
+  ],
+  "devDependencies": {
+    "mocha": "~1.15.1",
+    "chai": "~1.8.1",
+    "jshint": "~2.3.0",
+    "express": "^4.2.0"
+  },
+  "author": "Patrick Steele-Idem <pnidem@gmail.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "dependencies": {
+    "async": "^0.8.0",
+    "request": "^2.34.0"
+  },
+  "version": "0.1.0-beta"
+}
