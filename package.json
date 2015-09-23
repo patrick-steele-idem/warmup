@@ -29,5 +29,5 @@
     "async": "^0.8.0",
     "request": "^2.34.0"
   },
-  "version": "0.1.0-beta"
+  "version": "1.0.0"
 }
