@@ -32,15 +32,28 @@ warmup(
     [
         '/foo', // A URL to hit to warmup the server
         '/bar', // A URL to hit to warmup the server
+        {
+            path: '/baz', // Required
+            headers: {
+                'User-Agent': 'xxx'
+            }
+        },
         function myFunc(callback) { // A custom warmup task
             var port = this.port; // The warmup port is there if you need it
             callback();
         }
     ],
     function(err) {
+        if (err) {
+            // handle error
+        }
         app.listen(8080);
     });
 ```
+
+Passing the warmup tasks information:
+* __string__: as a string that contains the path of the url to make a GET request to during warmup, e.g. '/foo'
+* __object__: as an object if you want to pass additional properties like __headers__ to the request object. Be sure to pass a __path__ property at the bare minimum when passing the request information in this case
 
 The following options are supported:
 
