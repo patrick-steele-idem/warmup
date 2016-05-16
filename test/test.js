@@ -1,4 +1,5 @@
 'use strict';
+
 var chai = require('chai');
 chai.Assertion.includeStack = true;
 require('chai').should();
@@ -14,10 +15,7 @@ describe('warmup' , function() {
     });
 
     it('should warmup a simple app', function(done) {
-        
-
         var app = express();
-
         var completed = {};
 
         app.get('/foo', function(req, res) {
@@ -34,6 +32,13 @@ describe('warmup' , function() {
             }, 200);
         });
 
+        app.get('/baz', function (req, res) {
+            setTimeout(function () {
+                res.end('baz');
+                completed.baz = true;
+            }, 200);
+        });
+
         var port = null;
 
         warmup(
@@ -41,6 +46,9 @@ describe('warmup' , function() {
             [
                 '/foo',
                 '/bar',
+                {
+                    path: '/baz'
+                },
                 function(callback) {
                     port = this.port;
                     setTimeout(function() {
@@ -56,9 +64,10 @@ describe('warmup' , function() {
 
                 expect(completed.foo).to.equal(true);
                 expect(completed.bar).to.equal(true);
+                expect(completed.baz).to.equal(true);
                 expect(completed.func).to.equal(true);
                 done();
-            });
+            }
+        );
     });
 });
-
