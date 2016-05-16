@@ -14,7 +14,7 @@ npm install warmup
 ```javascript
 var warmup = require('warmup');
 warmup(app, tasks, callback);
-warmup(app, tasks, options, callback);
+warmup(app, tasks, callback, options);
 ```
 
 Simple example of warming up an Express server application:
