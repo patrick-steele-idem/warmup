@@ -1,11 +1,4 @@
 {
-    "predef": [
-        
-    ],
-
-    "globals": { 
-    },
-
     "node" : true,
     "es5" : false,
     "browser" : true,
@@ -30,9 +23,8 @@
     "sub": false,
     "white": false,
     "eqeqeq": false,
-    "latedef": true,
+    "latedef": "func",
     "unused": "vars",
-    
-    /* Relaxing options: */
+    "strict": false,
     "eqnull": true
 }

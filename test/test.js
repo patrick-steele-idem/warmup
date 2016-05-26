@@ -55,8 +55,22 @@ describe('warmup' , function() {
                         completed.func = true;
                         callback();
                     }, 200);
+                },
+                {
+                    name: 'Long task',
+                    func: function(callback) {
+                        port = this.port;
+                        setTimeout(function() {
+                            completed.func = true;
+                            callback();
+                        }, 400);
+                    },
+                    timeout: 500 // We will use a longer timeout for this specific task
                 }
             ],
+            {
+                timeout: 300 // Default timeout for each task
+            },
             function(err) {
                 if (err) {
                     return done(err);

@@ -14,7 +14,7 @@ npm install warmup
 ```javascript
 var warmup = require('warmup');
 warmup(app, tasks, callback);
-warmup(app, tasks, callback, options);
+warmup(app, tasks, options, callback);
 ```
 
 Simple example of warming up an Express server application:
@@ -41,8 +41,20 @@ warmup(
         function myFunc(callback) { // A custom warmup task
             var port = this.port; // The warmup port is there if you need it
             callback();
+        },
+        {
+            name: 'My long task', // You can give a task a name for debugging purposes
+            func: function(callback) {
+                setTimeout(function() {
+                    callback();
+                }, 1200);
+            },
+            timeout: 2000 // Override the default task timeout
         }
     ],
+    {
+        timeout: 1000 // Set a default task timeout
+    }
     function(err) {
         if (err) {
             // handle error
